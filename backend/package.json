@@ -1,28 +1,15 @@
 {
-  "name": "mern-express-app",
+  "name": "backend",
   "version": "1.0.0",
-  "description": "launch a express server",
-  "main": "server.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/camreynolds/netninja-mern-stack-tutorial.git"
-  },
-  "keywords": [
-    "mern",
-    "express",
-    "mongodb"
-  ],
-  "author": "carlos a muñoz r",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/camreynolds/netninja-mern-stack-tutorial/issues"
-  },
-  "homepage": "https://github.com/camreynolds/netninja-mern-stack-tutorial#readme",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "express": "^4.18.1"
+    "express": "^4.18.2"
   }
 }
