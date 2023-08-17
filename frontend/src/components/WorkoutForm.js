@@ -1,10 +1,13 @@
 import { useState } from "react"
+import useWorkoutContext from "../hooks/useWorkoutContext"
 
 const WorkoutForm = () =>{
+  const {dispatch} = useWorkoutContext()
   const [title, setTitle] = useState("")
   const [load, setLoad] = useState("")
   const [reps, setReps] = useState("")
   const [error, setError] = useState(null)
+  const [emptyFields, setEmptyfields] = useState([])
 
   const handleSubmit = async (e) =>{
     e.preventDefault()
@@ -23,6 +26,7 @@ const WorkoutForm = () =>{
 
     if(!response.ok){
       setError(json.error)
+      setEmptyfields(json.emptyFields)
     }
 
     if(response.ok){
@@ -30,7 +34,9 @@ const WorkoutForm = () =>{
       setTitle("")
       setLoad("")
       setReps("")
+      setEmptyfields([])
       console.log("New workout saved", json);
+      dispatch({type: "CREATE_WORKOUTS", payload: json})
     }
   }
 
@@ -42,6 +48,7 @@ const WorkoutForm = () =>{
         type="text"
         onChange={ e => setTitle(e.target.value)}
         value={title} 
+        className={emptyFields.includes("title") ? "error" : ""}
       />
 
       <label>Load (Kg):</label>
@@ -49,6 +56,7 @@ const WorkoutForm = () =>{
         type="number"
         onChange={ e => setLoad(e.target.value)}
         value={load}
+        className={emptyFields.includes("load") ? "error" : ""}
       />
 
       <label>Reps:</label>
@@ -56,6 +64,7 @@ const WorkoutForm = () =>{
         type="number"
         onChange={ e => setReps(e.target.value)}
         value={reps}
+        className={emptyFields.includes("reps") ? "error" : ""}
       />
 
       <button>Save workout</button>
