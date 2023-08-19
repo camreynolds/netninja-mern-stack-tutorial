@@ -5,7 +5,7 @@ const useWorkoutContext = () =>{
   const context = useContext(WorkoutContext)
 
   if(!context){
-    throw Error("useWorkoutContext must be used inside a WorkoutContextProvider")
+    throw Error("WorkoutContext must be used inside a WorkoutContextProvider")
   }
 
   return context

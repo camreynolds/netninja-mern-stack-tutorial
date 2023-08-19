@@ -8,6 +8,12 @@ const Navbar = () =>{
           <h1>Workout Buddy</h1>
         </Link>
       </div>
+      <nav>
+        <div>
+          <Link to="/signup">Signup</Link>
+          <Link to="/login" >Login</Link>
+        </div>
+      </nav>
     </header>
   )
 }
