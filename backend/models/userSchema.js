@@ -57,9 +57,9 @@ userSchema.statics.login = async function(email,password){
     throw Error("this user doesn't exist.")
   }
 
-  const validPass = await bcrypt.compare(password, user.password)
+  const match = await bcrypt.compare(password, user.password)
   
-  if(!validPass){
+  if(!match){
     throw Error("this is not a valid password.")
   }
 
