@@ -28,22 +28,22 @@ const getSingleWorkout = async (req,res) =>{
 
 const createSingleWorkout = async (req,res) =>{
   const {title,load,reps} = req.body
-  const emptyFields = []
+  const isEmpty = []
 
   if(!title){
-    emptyFields.push("title")
+    isEmpty.push("title")
   }
 
   if(!load){
-    emptyFields.push("load")
+    isEmpty.push("load")
   }
 
   if(!reps){
-    emptyFields.push("reps")
+    isEmpty.push("reps")
   }
   
-  if(emptyFields.length > 0){
-    return res.status(400).json({error: "All the fields must be fill in.", emptyFields})
+  if(isEmpty.length > 0){
+    return res.status(400).json({error: "All the fields must be fill in.", isEmpty})
   }
 
   try {
