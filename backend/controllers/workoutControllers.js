@@ -2,8 +2,10 @@ const Workout = require("../models/workoutSchema")
 const mongoose = require("mongoose")
 
 const getAllWorkouts = async (req,res) =>{
+  const user_id = req.user._id
+
   try {
-    const workouts = await Workout.find().sort({createdAt: -1})
+    const workouts = await Workout.find({user_id}).sort({createdAt: -1})
     res.status(200).json(workouts)
   } catch (error) {
     res.status(404).json({error: "Not such workouts."})
@@ -27,6 +29,7 @@ const getSingleWorkout = async (req,res) =>{
 }
 
 const createSingleWorkout = async (req,res) =>{
+  
   const {title,load,reps} = req.body
   const isEmpty = []
 
@@ -47,7 +50,8 @@ const createSingleWorkout = async (req,res) =>{
   }
 
   try {
-    const workout = await Workout.create({title,load,reps})
+    const user_id = req.user._id
+    const workout = await Workout.create({title,load,reps,user_id})
     res.status(200).json(workout)
     
   } catch (error) {
