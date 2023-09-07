@@ -11,4 +11,4 @@ const useAuthContext = ()=>{
   return context
 }
 
-export default context
+export default useAuthContext
